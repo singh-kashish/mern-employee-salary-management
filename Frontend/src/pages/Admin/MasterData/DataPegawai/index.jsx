@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { deleteDataPegawai, getDataPegawai, getMe } from '../../../../config/redux/action';
 import { BiSearch } from 'react-icons/bi';
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight, MdOutlineKeyboardArrowDown } from 'react-icons/md';
-import { useRef } from 'react';
+import { BsDownload } from 'react-icons/bs';
 
 const ITEMS_PER_PAGE = 4;
 
@@ -146,6 +146,29 @@ const DataPegawai = () => {
         return items;
     };
 
+    const handleExportCSV = () => {
+        const headers = ['No', 'NIK', 'Nama Pegawai', 'Jenis Kelamin', 'Jabatan', 'Tanggal Masuk', 'Status'];
+        const rows = filteredDataPegawai.map((d, i) => [
+            i + 1,
+            d.nik,
+            d.nama_pegawai,
+            d.jenis_kelamin,
+            d.jabatan,
+            d.tanggal_masuk,
+            d.status
+        ]);
+        const csvContent = [headers, ...rows]
+            .map(row => row.map(val => `"${val ?? ''}"`).join(','))
+            .join('\n');
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'data-pegawai.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+
     return (
         <Layout>
             <Breadcrumb pageName="Data Pegawai" />
@@ -157,6 +180,13 @@ const DataPegawai = () => {
                     </span>
                 </ButtonOne>
             </Link>
+            <button
+                onClick={handleExportCSV}
+                className="m-3 inline-flex items-center gap-2 rounded bg-success py-2 px-4 text-white hover:bg-opacity-90"
+            >
+                <BsDownload />
+                <span>Export CSV</span>
+            </button>
             <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 mt-6">
                 <div className="flex justify-between items-center mt-4 flex-col md:flex-row md:justify-between">
                     <div className="relative flex-1 md:mr-2 mb-4 md:mb-0">
@@ -190,7 +220,6 @@ const DataPegawai = () => {
                 </div>
 
                 <div
-                ref={tableRef}
                 className="max-w-full overflow-x-auto py-4 scroll-smooth relative"
                 >
                     <table className="min-w-[1024px] table-auto">
