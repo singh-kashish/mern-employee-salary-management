@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { deleteDataPegawai, getDataPegawai, getMe } from '../../../../config/redux/action';
 import { BiSearch } from 'react-icons/bi';
 import { MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight, MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import { useRef } from 'react';
 
 const ITEMS_PER_PAGE = 4;
 
@@ -20,6 +21,7 @@ const DataPegawai = () => {
     const navigate = useNavigate();
     const { isError, user } = useSelector((state) => state.auth);
     const { dataPegawai } = useSelector((state) => state.dataPegawai);
+    
 
     const totalPages = Math.ceil(dataPegawai.length / ITEMS_PER_PAGE);
 
@@ -187,8 +189,11 @@ const DataPegawai = () => {
                     </div>
                 </div>
 
-                <div className="max-w-full overflow-x-auto py-4">
-                    <table className="w-full table-auto">
+                <div
+                ref={tableRef}
+                className="max-w-full overflow-x-auto py-4 scroll-smooth relative"
+                >
+                    <table className="min-w-[1024px] table-auto">
                         <thead>
                             <tr className="bg-gray-2 text-left dark:bg-meta-4">
                                 <th className="py-4 px-4 font-medium text-black dark:text-white xl:pl-11">No</th>
