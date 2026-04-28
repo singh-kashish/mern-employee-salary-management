@@ -12,16 +12,16 @@ import AuthRoute from './routes/AuthRoute.js';
 
 const app = express();
 
+dotenv.config();
 const sessionStore = SequelizeStore(session.Store);
 const store = new sessionStore({
     db: db
 });
 
-/* (async() => {
+(async() => {
     await db.sync();
-})(); */
+})();
 
-dotenv.config();
 
 // Middleware
 app.use(session({
@@ -48,7 +48,7 @@ app.use(express.static("public"));
 app.use(UserRoute);
 app.use(AuthRoute);
 
-// store.sync();
+store.sync();
 
 app.listen(process.env.APP_PORT, () => {
     console.log('Server up and running...');
