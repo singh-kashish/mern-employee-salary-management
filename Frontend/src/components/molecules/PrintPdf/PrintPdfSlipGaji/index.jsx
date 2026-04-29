@@ -231,7 +231,7 @@ const PrintPdfSlipGaji = () => {
                                     <span>{name}</span>
                                 </div>
                                 <div className="font-medium text-black dark:text-white">
-                                    <span className="text-right">Karawang, {`${new Date().getDate()} ${bulan} ${tahun}`}</span>
+                                    <span className="text-right">Karawang, {`${String(new Date().getDate()).padStart(2,'0')}/${String(new Date().getMonth()+1).padStart(2,'0')}/${new Date().getFullYear()}`}</span>
                                     <br />
                                     <span>Finance</span>
                                     <br />
@@ -240,7 +240,7 @@ const PrintPdfSlipGaji = () => {
                                 </div>
                             </div>
                             <div className="italic text-black dark:text-white mt-30">
-                                Dicetak Pada : {`${new Date().getDate()} ${bulan} ${tahun}`}
+                                Dicetak Pada : {`${String(new Date().getDate()).padStart(2,'0')}/${String(new Date().getMonth()+1).padStart(2,'0')}/${new Date().getFullYear()}`}
                             </div>
                         </div>
                     );
