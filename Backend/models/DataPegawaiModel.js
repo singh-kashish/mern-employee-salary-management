@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import db from '../config/Database.js';
+import db from '../config/Database. js';
 
 const {DataTypes} = Sequelize;
 
@@ -48,6 +48,10 @@ const DataPegawai = db.define('data_pegawai', {
         allowNull: false
     },
     url: DataTypes.STRING,
+    designation: {
+        type: DataTypes.STRING(50),
+        allowNull: true
+    },
     hak_akses: {
         type: DataTypes.STRING,
         allowNull: false,
