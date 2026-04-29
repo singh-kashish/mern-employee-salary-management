@@ -3,16 +3,16 @@
 SiPeKa (Employee Payroll System) is a system used by companies to manage employee payroll processes efficiently and accurately. This system plays a key role in automating various tasks related to payroll, such as calculating payroll, processing attendance, and paying employee wages.<br/> In SiPeKa, employee information such as personal data, position and salary level is stored centrally. Every month, the system will retrieve employee attendance data and perform salary calculations based on the available information. This includes factors such as relevant hours worked, leave, overtime and deductions.</h5>
 <br/>
 
-  * [Configuration and Setup](#configuration-and-setup)
-  * [Key Features](#key-features)
-  * [Technologies used](#technologies-used)
-      - [Frontend](#frontend)
-      - [Backend](#backend)
-      - [Database](#database)
-  * [📸 Screenshots](#screenshots)
-  * [Meet The Teams](#meet-the-teams)
-  * [Author](#author)
-  * [License](#license)
+- [Configuration and Setup](#configuration-and-setup)
+- [Key Features](#key-features)
+- [Technologies used](#technologies-used)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+  - [Database](#database)
+- [📸 Screenshots](#screenshots)
+- [Meet The Teams](#meet-the-teams)
+- [Author](#author)
+- [License](#license)
 
 ## Configuration and Setup
 
@@ -32,18 +32,18 @@ $ npm run dev(to start the Frontend)
 
 In the second terminal
 
-- Create your MySQL database, which you will use as your database
-- Supply the following credentials
+```
+- Create your MySQL database, which you will use as your database on local machine
+$ Creare .env file and add : -
+APP_PORT=5001
+SESS_SECRET=supersecretkey123
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=MySqlDbPasswordRunningOnLocal
+DB_NAME=db_penggajian3
 
 ```
-#  --- .env  ---
 
-APP_PORT =5000
-SESS_SECRET =
-
-```
-
-```
 # --- Terminal ---
 
 $ cd Backend
@@ -206,3 +206,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
