@@ -64,6 +64,10 @@ import {
     viewDataGajiSinglePegawaiByYear
 } from '../controllers/Pegawai.js';
 
+
+import { createOvertime, getOvertime } from '../controllers/OvertimeController.js';
+
+
 const router = express.Router();
 
 // Admin Route :
@@ -135,5 +139,7 @@ router.patch('/change_password', verifyUser, changePassword);
 /* ==== Logout ==== */
 router.delete('/logout', LogOut);
 
+router.get('/overtime', verifyUser, adminOnly, getOvertime);
+router.post('/overtime', verifyUser, adminOnly, createOvertime);
 
 export default router;
